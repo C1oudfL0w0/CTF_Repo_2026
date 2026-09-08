@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>区块链</title>
+<style>
+:root{font-family:Inter,Arial,"Microsoft YaHei",sans-serif;color:#172033;background:#f5f7fb}body{margin:0}.wrap{max-width:1180px;margin:0 auto;padding:28px 18px 48px}header{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;border-bottom:1px solid #dde3ef;padding-bottom:18px}h1{font-size:28px;margin:0}.sub{color:#60708a;margin-top:8px}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:20px 0}.card{background:#fff;border:1px solid #e1e7f0;border-radius:8px;padding:16px;box-shadow:0 1px 2px #0000000a}.k{font-size:13px;color:#60708a}.v{font-size:20px;font-weight:700;margin-top:8px;word-break:break-all}.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.pill{background:#eaf1ff;color:#2855a5;border-radius:999px;padding:7px 10px;font-size:13px}.panel{background:#fff;border:1px solid #e1e7f0;border-radius:8px;padding:16px;margin-top:14px}input,button{height:38px;border:1px solid #c9d3e3;border-radius:6px;padding:0 10px;font-size:14px}input{min-width:300px;flex:1}button{background:#2454d6;color:#fff;border-color:#2454d6;cursor:pointer}table{width:100%;border-collapse:collapse;margin-top:10px}th,td{text-align:left;border-bottom:1px solid #edf1f7;padding:10px 8px;font-size:14px;vertical-align:top}th{color:#60708a;font-weight:600}.mono{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;word-break:break-all}.codebox{max-height:420px;overflow:auto;white-space:pre;word-break:normal;background:#0f172a;color:#dbeafe;border-radius:6px;padding:12px;font-size:13px;line-height:1.5}.source-head{display:flex;justify-content:space-between;gap:12px;align-items:center;margin:12px 0 8px}.source-title{font-weight:700}.copybtn{height:30px;padding:0 9px;font-size:12px;background:#eef4ff;color:#2454d6;border-color:#b8c8ea}.ok{color:#16803a}.err{color:#c02b2b}@media(max-width:800px){.grid{grid-template-columns:1fr 1fr}header{align-items:flex-start;flex-direction:column}input{min-width:0;width:100%}}@media(max-width:520px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><div><h1>区块链</h1><div class="sub">链 ID 888 / geth Clique 私有链</div></div><div class="row"><span class="pill" id="status">connecting</span><span class="pill mono" id="rpc"></span></div></header>
+<section class="grid">
+<div class="card"><div class="k">Chain ID</div><div class="v" id="chainId">-</div></div>
+<div class="card"><div class="k">最新区块</div><div class="v" id="blockNumber">-</div></div>
+<div class="card"><div class="k">节点数</div><div class="v" id="peers">-</div></div>
+<div class="card"><div class="k">Gas 价格</div><div class="v" id="gasPrice">-</div></div>
+</section>
+<section class="panel"><div class="row"><input id="q" placeholder="输入区块号、区块 hash、交易 hash 或地址" /><button onclick="search()">查询</button><button onclick="refresh()">刷新</button></div><div id="result"></div></section>
+<section class="panel"><h3>最新区块</h3><table><thead><tr><th>区块</th><th>Hash</th><th>时间</th><th>交易数</th><th>出块者</th></tr></thead><tbody id="blocks"></tbody></table></section>
+<section class="panel" id="contractsListPanel"><div class="source-head"><span class="source-title">已部署合约列表</span><button class="copybtn" onclick="loadContractsList()">刷新列表</button></div><table><thead><tr><th>合约名称</th><th>合约地址</th><th>更新时间</th><th>操作</th></tr></thead><tbody id="contractsList"><tr><td colspan="4">loading</td></tr></tbody></table></section>
+<section class="panel" id="faucetPanel"><h3>接水</h3><div class="row"><input id="faucetTo" placeholder="接收测试 ETH 的钱包地址 0x..." /><input id="faucetAmount" value="10" placeholder="数量 ETH" style="max-width:160px" /><button onclick="requestFaucet()">领取测试 ETH</button></div><div id="faucetStatus" class="sub"></div></section>
+<section class="panel" id="contractSourcePanel"><h3>验证合约</h3><div class="row"><input id="contractAddress" placeholder="合约地址 0x..." /><input id="contractName" placeholder="合约名称" /><input id="adminToken" type="password" placeholder="&#x7ba1;&#x7406;&#x5bc6;&#x7801;" style="max-width:180px" /><button onclick="saveContractSource()">保存源码</button></div><div class="row" style="margin-top:10px"><textarea id="contractAbi" placeholder="ABI，可选，粘贴 JSON" style="width:100%;min-height:90px;border:1px solid #c9d3e3;border-radius:6px;padding:10px;font-size:14px"></textarea></div><div class="row" style="margin-top:10px"><textarea id="contractSource" placeholder="Solidity 源码" style="width:100%;min-height:180px;border:1px solid #c9d3e3;border-radius:6px;padding:10px;font-size:14px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace"></textarea></div><div id="saveStatus" class="sub"></div></section>
+</div>
+<script>
+const rpcUrl = `${location.origin}/rpc/`;
+document.getElementById('rpc').textContent = rpcUrl;
+async function rpc(method, params=[]) { const r = await fetch(rpcUrl, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({jsonrpc:'2.0', id:Date.now(), method, params})}); const j = await r.json(); if (j.error) throw new Error(j.error.message); return j.result; }
+const hx=n=>'0x'+Number(n).toString(16); const dec=x=>parseInt(x||'0x0',16); const short=x=>x?x.slice(0,10)+'...'+x.slice(-8):'-';
+function ts(x){return new Date(dec(x)*1000).toLocaleString();}
+async function loadBlock(n){return rpc('eth_getBlockByNumber',[hx(n),true]);}
+async function refresh(){try{document.getElementById('status').textContent='online';document.getElementById('status').className='pill ok'; const [cid,bn,pc,gp]=await Promise.all([rpc('eth_chainId'),rpc('eth_blockNumber'),rpc('net_peerCount'),rpc('eth_gasPrice')]); const latest=dec(bn); chainId.textContent=`${dec(cid)} (${cid})`; blockNumber.textContent=latest; peers.textContent=dec(pc); gasPrice.textContent=`${dec(gp)} wei`; const rows=[]; for(let i=latest;i>=Math.max(0,latest-9);i--){const b=await loadBlock(i); rows.push(`<tr><td>${dec(b.number)}</td><td class="mono" title="${b.hash}">${short(b.hash)}</td><td>${ts(b.timestamp)}</td><td>${b.transactions.length}</td><td class="mono">${short(b.miner)}</td></tr>`)} blocks.innerHTML=rows.join('');}catch(e){status.textContent='offline: '+e.message;status.className='pill err';}}
+async function search(){
+  const v=q.value.trim(); if(!v)return;
+  try{
+    let out;
+    if(/^\d+$/.test(v)) {
+      out=await loadBlock(Number(v));
+    } else if(/^0x[0-9a-fA-F]{64}$/.test(v)) {
+      const tx=await rpc('eth_getTransactionByHash',[v]);
+      const block=tx?null:await rpc('eth_getBlockByHash',[v,true]);
+      const receipt=tx?await rpc('eth_getTransactionReceipt',[v]):null;
+      out={transaction:tx, receipt, block};
+    } else if(/^0x[0-9a-fA-F]{40}$/.test(v)) {
+      const addr=v.toLowerCase();
+      const [bal,nonce,code,registered]=await Promise.all([
+        rpc('eth_getBalance',[addr,'latest']),
+        rpc('eth_getTransactionCount',[addr,'latest']),
+        rpc('eth_getCode',[addr,'latest']),
+        loadContractSource(addr)
+      ]);
+      const codeBytes=code && code!=='0x' ? (code.length-2)/2 : 0;
+      out={address:addr,type:codeBytes>0?'contract':'externally-owned account',isContract:codeBytes>0,balanceWei:String(BigInt(bal)),nonce:dec(nonce),codeBytes,bytecode:code,registeredSource:registered};
+      if(codeBytes>0){contractAddress.value=addr;if(registered){contractName.value=registered.name||'';contractAbi.value=registered.abi?JSON.stringify(registered.abi,null,2):'';contractSource.value=registered.source||'';}}
+    } else throw new Error('\u683c\u5f0f\u4e0d\u652f\u6301');
+    result.innerHTML=(out && out.address)?renderContractResult(out):renderJson(out);
+  }catch(e){result.innerHTML='<p class="err">'+e.message+'</p>';}
+}
+function escHtml(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function renderJson(out){return '<pre class="mono codebox">'+escHtml(JSON.stringify(out,null,2))+'</pre>';}
+function renderContractResult(out){
+  const reg=out.registeredSource;
+  const summary={...out};
+  delete summary.bytecode;
+  delete summary.registeredSource;
+  let html='<div class="source-head"><span class="source-title">\u67e5\u8be2\u7ed3\u679c</span></div>'+renderJson(summary);
+  html+='<div class="source-head"><span class="source-title">Bytecode</span></div><pre class="mono codebox">'+escHtml(out.bytecode||'')+'</pre>';
+  if(reg){
+    html+='<div class="source-head"><span class="source-title">\u8ba4\u8bc1\u6e90\u7801'+(reg.name?' - '+escHtml(reg.name):'')+'</span></div><pre class="mono codebox">'+escHtml(reg.source||'')+'</pre>';
+    if(reg.abi){html+='<div class="source-head"><span class="source-title">ABI</span></div><pre class="mono codebox">'+escHtml(JSON.stringify(reg.abi,null,2))+'</pre>';}
+  }else if(out.isContract){
+    html+='<p class="sub">\u8be5\u5408\u7ea6\u8fd8\u6ca1\u6709\u8ba4\u8bc1\u6e90\u7801\uff0c\u53ef\u4ee5\u5728\u4e0b\u65b9\u201c\u9a8c\u8bc1\u5408\u7ea6\u201d\u91cc\u4fdd\u5b58\u6e90\u7801\u548c ABI\u3002</p>';
+  }
+  return html;
+}
+
+function ethToWeiHex(v){
+  const raw=String(v||'0').trim();
+  if(!/^\d+(\.\d{0,18})?$/.test(raw)) throw new Error('\u6570\u91cf\u683c\u5f0f\u4e0d\u6b63\u786e');
+  const parts=raw.split('.');
+  const whole=BigInt(parts[0]||'0')*1000000000000000000n;
+  const frac=BigInt(((parts[1]||'')+'000000000000000000').slice(0,18));
+  return '0x'+(whole+frac).toString(16);
+}
+async function requestFaucet(){
+  const to=faucetTo.value.trim().toLowerCase();
+  try{
+    if(!/^0x[0-9a-f]{40}$/.test(to)) throw new Error('\u94b1\u5305\u5730\u5740\u683c\u5f0f\u4e0d\u6b63\u786e');
+    faucetStatus.textContent='\u6b63\u5728\u53d1\u9001...'; faucetStatus.className='sub';
+    const accounts=await rpc('eth_accounts');
+    if(!accounts.length) throw new Error('\u8282\u70b9\u6ca1\u6709\u53ef\u7528\u7684\u51fa\u6b3e\u8d26\u6237');
+    const tx=await rpc('eth_sendTransaction',[{from:accounts[0],to,value:ethToWeiHex(faucetAmount.value)}]);
+    faucetStatus.innerHTML='\u5df2\u53d1\u9001\uff0ctx hash: <span class="mono">'+tx+'</span>';
+    faucetStatus.className='sub ok';
+    q.value=tx; await search(); await refresh();
+  }catch(e){faucetStatus.textContent=e.message; faucetStatus.className='sub err';}
+}
+
+async function loadContractsList(){
+  try{
+    const r=await fetch(`/contracts/contracts.json?ts=${Date.now()}`);
+    const data=r.ok?await r.json():{};
+    const items=Object.values(data).sort((a,b)=>(b.updatedAt||0)-(a.updatedAt||0));
+    if(!items.length){contractsList.innerHTML='<tr><td colspan="4" class="sub">\u6682\u65e0\u5df2\u767b\u8bb0\u5408\u7ea6\uff0c\u4fdd\u5b58\u6e90\u7801\u540e\u4f1a\u51fa\u73b0\u5728\u8fd9\u91cc\u3002</td></tr>';return;}
+    contractsList.innerHTML=items.map(x=>`<tr><td>${escHtml(x.name||'\u672a\u547d\u540d\u5408\u7ea6')}</td><td class="mono">${escHtml(x.address)}</td><td>${x.updatedAt?new Date(x.updatedAt*1000).toLocaleString():'-'}</td><td><button class="copybtn" onclick="q.value='${escHtml(x.address)}';search();window.scrollTo({top:0,behavior:'smooth'})">\u67e5\u770b</button></td></tr>`).join('');
+  }catch(e){contractsList.innerHTML='<tr><td colspan="4" class="err">'+escHtml(e.message)+'</td></tr>';}
+}
+
+async function loadContractSource(addr){
+  try{
+    const r=await fetch(`/contracts/${addr.toLowerCase()}.json?ts=${Date.now()}`);
+    if(!r.ok)return null;
+    return await r.json();
+  }catch(e){return null;}
+}
+async function saveContractSource(){
+  const address=contractAddress.value.trim().toLowerCase();
+  const name=contractName.value.trim();
+  const source=contractSource.value;
+  const abiText=contractAbi.value.trim();
+  const token=(document.getElementById('adminToken')?.value||'').trim();
+  if(!/^0x[0-9a-f]{40}$/.test(address)){saveStatus.textContent='\u5408\u7ea6\u5730\u5740\u683c\u5f0f\u4e0d\u6b63\u786e';saveStatus.className='sub err';return;}
+  if(!token){saveStatus.textContent='\u9700\u8981\u7ba1\u7406\u5bc6\u7801\u624d\u80fd\u5199\u5165';saveStatus.className='sub err';return;}
+  if(await loadContractSource(address)){saveStatus.textContent='\u8be5\u5408\u7ea6\u6e90\u7801\u5df2\u5b58\u5728\uff0c\u4e0d\u80fd\u91cd\u590d\u5199\u5165';saveStatus.className='sub err';return;}
+  let abi=null;
+  if(abiText){try{abi=JSON.parse(abiText);}catch(e){saveStatus.textContent='ABI \u4e0d\u662f\u5408\u6cd5 JSON';saveStatus.className='sub err';return;}}
+  const r=await fetch('/contracts/save',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({address,name,abi,source,adminToken:token})});
+  const j=await r.json().catch(()=>({ok:false,error:'\u4fdd\u5b58\u5931\u8d25'}));
+  const messages={
+    'admin token required':'\u7ba1\u7406\u5bc6\u7801\u4e0d\u6b63\u786e',
+    'contract source already exists; first registration is locked':'\u8be5\u5408\u7ea6\u6e90\u7801\u5df2\u5b58\u5728\uff0c\u4e0d\u80fd\u91cd\u590d\u5199\u5165',
+    'bad address':'\u5408\u7ea6\u5730\u5740\u683c\u5f0f\u4e0d\u6b63\u786e'
+  };
+  saveStatus.textContent=j.ok?'\u4fdd\u5b58\u6210\u529f':(messages[j.error]||j.error||'\u4fdd\u5b58\u5931\u8d25');
+  saveStatus.className=j.ok?'sub ok':'sub err';
+  if(j.ok){loadContractsList(); q.value=address; await search();}
+}
+refresh(); loadContractsList(); setInterval(refresh,5000);
+</script>
+</body>
+</html>

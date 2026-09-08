@@ -1,0 +1,152 @@
+{
+  "address": "0x953183b0a24c830cf0315535ad8ddc12a41dd60e",
+  "name": "WalletSignatureDecrypt",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "authorizedSigner_",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "challengeHash_",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes",
+          "name": "encryptedFlag_",
+          "type": "bytes"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "player",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "signer",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "flag",
+          "type": "string"
+        }
+      ],
+      "name": "FlagDecrypted",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "authorizedSigner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "challengeHash",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "challengeName",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "signature",
+          "type": "bytes"
+        }
+      ],
+      "name": "decryptFlag",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "encryptedFlag",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getEncryptedFlag",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "messageDigest",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\ncontract WalletSignatureDecrypt {\n    string public constant challengeName = \"WalletSignatureDecrypt\";\n\n    address public immutable authorizedSigner;\n    bytes32 public immutable challengeHash;\n    bytes public encryptedFlag;\n\n    event FlagDecrypted(address indexed player, address indexed signer, string flag);\n\n    constructor(\n        address authorizedSigner_,\n        bytes32 challengeHash_,\n        bytes memory encryptedFlag_\n    ) {\n        authorizedSigner = authorizedSigner_;\n        challengeHash = challengeHash_;\n        encryptedFlag = encryptedFlag_;\n    }\n\n    function messageDigest() public view returns (bytes32) {\n        return keccak256(abi.encodePacked(\"\\x19Ethereum Signed Message:\\n32\", challengeHash));\n    }\n\n    function getEncryptedFlag() external view returns (bytes memory) {\n        return encryptedFlag;\n    }\n\n    function decryptFlag(bytes calldata signature) external returns (string memory) {\n        require(_recover(messageDigest(), signature) == authorizedSigner, \"bad signer\");\n\n        bytes32 key = keccak256(signature);\n        bytes memory flagBytes = new bytes(encryptedFlag.length);\n\n        for (uint256 i = 0; i < encryptedFlag.length; i++) {\n            flagBytes[i] = encryptedFlag[i] ^ key[i % 32];\n        }\n\n        string memory flag = string(flagBytes);\n        emit FlagDecrypted(msg.sender, authorizedSigner, flag);\n        return flag;\n    }\n\n    function _recover(bytes32 digest, bytes calldata signature) private pure returns (address) {\n        require(signature.length == 65, \"bad signature length\");\n\n        bytes32 r;\n        bytes32 s;\n        uint8 v;\n\n        assembly {\n            r := calldataload(signature.offset)\n            s := calldataload(add(signature.offset, 0x20))\n            v := byte(0, calldataload(add(signature.offset, 0x40)))\n        }\n\n        if (v < 27) {\n            v += 27;\n        }\n\n        require(v == 27 || v == 28, \"bad v\");\n        return ecrecover(digest, v, r, s);\n    }\n}\n",
+  "createdAt": 1783501195,
+  "updatedAt": 1783501195
+}

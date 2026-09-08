@@ -1,0 +1,155 @@
+{
+  "address": "0x99ec67374c983edac3c58306b3f19b5d660d771f",
+  "name": "EasyAccessControl",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "flag_",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "player",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "challengeName",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "flag",
+          "type": "string"
+        }
+      ],
+      "name": "FlagClaimed",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "challengeName",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "changeOwner",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "claimFlag",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getFlagAfterSolved",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "openDoor",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "passed",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "solved",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\nabstract contract FlagChallenge {\n    string public challengeName;\n    string private rewardFlag;\n    mapping(address => bool) public solved;\n\n    event FlagClaimed(address indexed player, string challengeName, string flag);\n\n    constructor(string memory name_, string memory flag_) {\n        challengeName = name_;\n        rewardFlag = flag_;\n    }\n\n    function claimFlag() external returns (string memory) {\n        require(!solved[msg.sender], \"already solved\");\n        require(_isSolved(msg.sender), \"challenge not solved\");\n\n        solved[msg.sender] = true;\n        emit FlagClaimed(msg.sender, challengeName, rewardFlag);\n        return rewardFlag;\n    }\n\n    function getFlagAfterSolved() external view returns (string memory) {\n        require(solved[msg.sender], \"not solved\");\n        return rewardFlag;\n    }\n\n    function _isSolved(address player) internal view virtual returns (bool);\n}\n\ncontract EasyAccessControl is FlagChallenge {\n    address public owner;\n    mapping(address => bool) public passed;\n\n    constructor(string memory flag_) FlagChallenge(\"EasyAccessControl\", flag_) {\n        owner = msg.sender;\n    }\n\n    function changeOwner(address newOwner) external {\n        owner = newOwner;\n    }\n\n    function openDoor() external {\n        require(msg.sender == owner, \"not owner\");\n        passed[msg.sender] = true;\n    }\n\n    function _isSolved(address player) internal view override returns (bool) {\n        return passed[player];\n    }\n}\n",
+  "createdAt": 1783501070,
+  "updatedAt": 1783501070
+}
