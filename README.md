@@ -73,7 +73,7 @@
 
 - **checkin**（Misc/Pyjail）- `LilacCTF2026/checkin.zip`（`jail.py`，Python 3.14 沙箱）
 - **CheckIn**（Web）- `LilacCTF2026/php/`（`index.php`、`s3Cr37_f1L3.php.bak`，PHP Development Server 源码泄露）
-- **Path**（Web）- `LilacCTF2026/path/exp.py`
+- **Path**（Web）- 黑盒题，仅exp `LilacCTF2026/path/exp.py`
 - **playground**（Web）- `LilacCTF2026/playground/`（Skulpt JS 沙箱，`skulpt.min.js`、`assets/index-*.js`）
 - **SafeSQL**（Web）- `LilacCTF2026/safesql/blind_inject.py`
 
